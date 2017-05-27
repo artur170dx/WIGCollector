@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WIGCollector
 {
-    interface IStockExchangeDataBase
+    interface IStockExchangeDatabase
     {
         void AddRate(StockExchangeRate rate);
     }

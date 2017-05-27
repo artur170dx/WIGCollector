@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WIGCollector.DataBase
+namespace WIGCollector.Database
 {
-    class FileDataBase : IStockExchangeDataBase
+    class FileDatabase : IStockExchangeDatabase
     {
         public void AddRate(StockExchangeRate rate)
         {

@@ -8,6 +8,6 @@ namespace WIGCollector
 {
     public interface IStockExchangeRateDownloader
     {
-        List<StockExchangeRate> GetActualRatings(List<string> wigNames);
+        List<StockExchangeRate> GetActualRatings();
     }
 }
