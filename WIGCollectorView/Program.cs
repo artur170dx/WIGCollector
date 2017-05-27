@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WIGCollector;
 
 namespace WIGCollectorView
 {
@@ -10,6 +11,9 @@ namespace WIGCollectorView
     {
         static void Main(string[] args)
         {
+            CollectorBrain brain = new CollectorBrain();
+            brain.Run();
+            Console.Read();
         }
     }
 }

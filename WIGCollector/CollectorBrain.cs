@@ -38,7 +38,7 @@ namespace WIGCollector
 
         private void callback(object objectInfo)
         {
-
+            Do();
         }
 
         private void Do()

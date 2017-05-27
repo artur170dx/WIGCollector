@@ -39,7 +39,7 @@ namespace WIGCollector.Html
         {
             string Url = webPage;
             HtmlWeb web = new HtmlWeb();
-            HtmlDocument doc = web.Load(Url);
+            HtmlDocument doc = web.Load(Url); // TODO: obsługa błędu gdy nie łąduje
             List<StockExchangeRate> actualRates = new List<StockExchangeRate>();
             foreach (StockHtmlNode wig in wigs)
 	        {

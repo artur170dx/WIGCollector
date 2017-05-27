@@ -4,7 +4,7 @@ using WIGCollector.Html;
 using System.Collections.Generic;
 using WIGCollector;
 
-namespace Tests
+namespace Tests.Html
 {
     [TestClass]
     public class StockRateFromHtmlTest
