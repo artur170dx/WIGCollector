@@ -14,7 +14,11 @@ namespace WIGCollectorView
             WIGCollector.WIGCollector brain = new WIGCollector.WIGCollector();
             brain.ChangeInterval(10);
             brain.Run();
-            Console.Read();
+            ConsoleKeyInfo key = new ConsoleKeyInfo();
+            while (key.Key != ConsoleKey.Escape)
+            {
+                Console.Read();
+            }
         }
     }
 }
