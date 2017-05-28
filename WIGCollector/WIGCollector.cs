@@ -13,20 +13,24 @@ namespace WIGCollector
         private TimeSpan defaultInterval = new TimeSpan(0, 1, 0);
         private Timer timer;
         private TimeSpan interval;
-
+        private CollectorBrain brain;
+      
         public WIGCollector()
         {
             interval = defaultInterval;
+            brain = new CollectorBrain(Factory.GetDownloader(), Factory.GetDataBase());
+            TimerCallback tmCallback = Callback;
+            timer = new Timer(tmCallback, "", Timeout.Infinite, Timeout.Infinite);
         }
 
         public void Run()
         {
-            TimerCallback tmCallback = Callback;
-            timer = new Timer(tmCallback, "", interval, interval);
+            TimerOn();
         }
 
-        public void ChangeInterval(TimeSpan requestedInterval)
+        public void ChangeInterval(int intervalInSeconds)
         {
+            TimeSpan requestedInterval = new TimeSpan(0, 0, intervalInSeconds);
             bool timerSuccessfullyChanged = timer.Change(requestedInterval, requestedInterval);
             if (timerSuccessfullyChanged)
             {
@@ -36,9 +40,12 @@ namespace WIGCollector
 
         private void Callback(object objectInfo)
         {
-            CollectorBrain brain = new CollectorBrain(Factory.GetDownloader(), Factory.GetDataBase());
             brain.Do();
         }
 
+        private void TimerOn()
+        {
+            timer.Change(interval, interval);
+        }
     }
 }

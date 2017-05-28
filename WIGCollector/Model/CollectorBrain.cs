@@ -11,6 +11,7 @@ namespace WIGCollector.Model
     {
         private IStockExchangeRateDownloader Downloader { get; set; }
         private IStockExchangeDatabase Database { get; set; }
+        private StockExchangeCache Cache { get; set; }
 
         public CollectorBrain(IStockExchangeRateDownloader downloader, IStockExchangeDatabase db)
         {
@@ -21,6 +22,7 @@ namespace WIGCollector.Model
             
             Downloader = downloader;
             Database = db;
+            Cache = StockExchangeCache.Instance;
         }
 
         public void Do()
@@ -28,7 +30,7 @@ namespace WIGCollector.Model
             List<StockExchangeRate> actualRates = Downloader.GetActualRatings();
             foreach (StockExchangeRate actualRate in actualRates)
             {
-                if (StockExchangeCache.HasChangedSinceLastTime(actualRate))
+                if (Cache.HasChangedSinceLastTime(actualRate))
                 {
                     Database.AddRate(actualRate);
                 }

@@ -28,8 +28,16 @@ namespace WIGCollector.Html
         {
             string Url = webPage;
             HtmlWeb web = new HtmlWeb();
-            HtmlDocument doc = web.Load(Url); // TODO: obsługa błędu gdy nie łąduje
+            HtmlDocument doc = new HtmlDocument();
             List<StockExchangeRate> actualRates = new List<StockExchangeRate>();
+            try
+            {
+                doc = web.Load(Url);
+            }
+            catch(System.Net.WebException exc)
+            {
+                return actualRates;
+            }
             foreach (StockHtmlNode wig in wigs)
 	        {
 		        HtmlNode node = doc.GetElementbyId(wig.HtmlNode);

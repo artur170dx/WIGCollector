@@ -12,6 +12,7 @@ namespace WIGCollectorView
         static void Main(string[] args)
         {
             WIGCollector.WIGCollector brain = new WIGCollector.WIGCollector();
+            brain.ChangeInterval(10);
             brain.Run();
             Console.Read();
         }

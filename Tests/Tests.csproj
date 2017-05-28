@@ -51,11 +51,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="HtmlTest\StockRateFromHtmlTest.cs" />
+    <Compile Include="ModelTest\StockExchangeCacheTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Database\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\WIGCollector\WIGCollector.csproj">
       <Project>{b1b60e2f-13e7-4eaf-8b56-13ee535f1147}</Project>
