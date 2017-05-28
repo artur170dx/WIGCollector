@@ -8,12 +8,11 @@ using WIGCollector.Model;
 
 namespace WIGCollector
 {
-    /* Aplikacja pobiera kursy ze strony http://stooq.pl <http://stooq.pl/> . 
-     * Dokładniej aplikacja ma pobierać w określonych konfigurowalnych 
+    /* Aplikacja pobiera kursy ze strony http://stooq.pl 
+     * Aplikacja pobiera w określonych konfigurowalnych 
      * odstępach czasowych (wstępnie co 1 minutę) wartości WIG, WIG20, WIG20 
-     * Fut, mWIG40, sWIG80 i zapisywać w wybranym miejscu 
-     * czas pobrania i wartości. Wartości zapisujemy tylko wtedy
-     * gdy się zmieniły od poprzedniego razu.*/
+     * Fut, mWIG40, sWIG80 i zapisuje czas pobrania i wartości do plików w folderze Database
+     * Wartości zapisujemy tylko wtedy, gdy się zmieniły od poprzedniego razu.*/
     public class WIGCollector
     {
         private TimeSpan defaultInterval = new TimeSpan(0, 1, 0);
