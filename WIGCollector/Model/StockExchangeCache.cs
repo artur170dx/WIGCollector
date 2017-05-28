@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WIGCollector
+namespace WIGCollector.Model
 {
     static class StockExchangeCache
     {

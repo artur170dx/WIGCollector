@@ -4,14 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WIGCollector.Model;
 
 namespace WIGCollector.Database
 {
     class FileDatabase : IStockExchangeDatabase
     {
-        private string databaseFolderName = "Database";
+        private const string databaseFolderName = "Database";
         private string basePath;
         private string databasePath;
+        private const char separator = ';';
 
         public FileDatabase()
         {
@@ -35,7 +37,7 @@ namespace WIGCollector.Database
             {
                 writer = File.CreateText(databaseFile);
             }
-            string lineToWrite = rate.Timestamp + " " + rate.Value;
+            string lineToWrite = rate.Timestamp.ToString() + separator + rate.Value;
             writer.WriteLine(lineToWrite);
             writer.Close();
         }

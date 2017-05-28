@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WIGCollector
+namespace WIGCollector.Model
 {
-    interface IStockExchangeDatabase
+    public interface IStockExchangeDatabase
     {
         void AddRate(StockExchangeRate rate);
     }

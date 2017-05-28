@@ -11,7 +11,7 @@ namespace WIGCollectorView
     {
         static void Main(string[] args)
         {
-            CollectorBrain brain = new CollectorBrain();
+            WIGCollector.WIGCollector brain = new WIGCollector.WIGCollector();
             brain.Run();
             Console.Read();
         }

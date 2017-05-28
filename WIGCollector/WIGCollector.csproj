@@ -43,14 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollectorBrain.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="Model\CollectorBrain.cs" />
     <Compile Include="Database\FileDatabase.cs" />
-    <Compile Include="IStockExchangeDatabase.cs" />
+    <Compile Include="Html\StockHtmlNode.cs" />
+    <Compile Include="Model\IStockExchangeDatabase.cs" />
+    <Compile Include="Model\StockExchangeCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IStockExchangeRateDownloader.cs" />
-    <Compile Include="StockExchangeCache.cs" />
-    <Compile Include="StockExchangeRate.cs" />
+    <Compile Include="Model\IStockExchangeRateDownloader.cs" />
+    <Compile Include="Model\StockExchangeRate.cs" />
     <Compile Include="Html\StockRateFromHtml.cs" />
+    <Compile Include="WIGCollector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

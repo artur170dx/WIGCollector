@@ -4,25 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using WIGCollector.Database;
-using WIGCollector.Html;
+using WIGCollector.Model;
 
 namespace WIGCollector
 {
-    public class CollectorBrain
+    public class WIGCollector
     {
         private TimeSpan defaultInterval = new TimeSpan(0, 1, 0);
         private Timer timer;
         private TimeSpan interval;
 
-        public CollectorBrain()
+        public WIGCollector()
         {
             interval = defaultInterval;
         }
 
         public void Run()
         {
-            TimerCallback tmCallback = callback;
+            TimerCallback tmCallback = Callback;
             timer = new Timer(tmCallback, "", interval, interval);
         }
 
@@ -33,27 +32,13 @@ namespace WIGCollector
             {
                 interval = requestedInterval;
             }
-                
         }
 
-        private void callback(object objectInfo)
+        private void Callback(object objectInfo)
         {
-            Do();
+            CollectorBrain brain = new CollectorBrain(Factory.GetDownloader(), Factory.GetDataBase());
+            brain.Do();
         }
 
-        private void Do()
-        {
-            IStockExchangeRateDownloader downloader = new StockRateFromHtml();
-            List<StockExchangeRate> actualRates = downloader.GetActualRatings();
-
-            IStockExchangeDatabase db = new FileDatabase();
-            foreach (StockExchangeRate actualRate in actualRates)
-            {
-                if (StockExchangeCache.HasChangedSinceLastTime(actualRate))
-                {
-                    db.AddRate(actualRate);
-                }
-            }
-        }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WIGCollector.Html;
 using System.Collections.Generic;
 using WIGCollector;
+using WIGCollector.Model;
 
 namespace Tests.Html
 {
