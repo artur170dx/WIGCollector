@@ -34,7 +34,7 @@ namespace WIGCollector.Html
             {
                 doc = web.Load(Url);
             }
-            catch(System.Net.WebException exc)
+            catch(System.Net.WebException)
             {
                 return actualRates;
             }
