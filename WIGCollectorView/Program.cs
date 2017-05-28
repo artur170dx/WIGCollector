@@ -12,12 +12,34 @@ namespace WIGCollectorView
         static void Main(string[] args)
         {
             WIGCollector.WIGCollector brain = new WIGCollector.WIGCollector();
-            brain.ChangeInterval(10);
             brain.Run();
-            ConsoleKeyInfo key = new ConsoleKeyInfo();
-            while (key.Key != ConsoleKey.Escape)
+            Console.WriteLine("WIGCollector start with default collection interval 1 minute.");
+            Console.WriteLine("Enter number of seconds and press Enter to change collection interval.");
+            uint number = 60;
+            while (!Console.KeyAvailable)
             {
-                Console.Read();
+                string a = Console.ReadLine();
+                bool bWriteNumber = false;
+                try
+                {
+                    number = uint.Parse(a);
+                    bWriteNumber = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Only uint");
+                }
+                finally
+                {
+                    if (bWriteNumber)
+                    {
+                        if (brain.ChangeInterval(number))
+                        {
+                            Console.WriteLine("Interval changed to " + number + " seconds");
+                        }
+                    }
+                            
+                }
             }
         }
     }

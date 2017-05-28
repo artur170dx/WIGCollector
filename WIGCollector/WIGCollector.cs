@@ -24,28 +24,24 @@ namespace WIGCollector
         {
             brain = new CollectorBrain(Factory.GetDownloader(), Factory.GetDataBase());
             TimerCallback tmCallback = Callback;
-            timer = new Timer(tmCallback, "", Timeout.Infinite, Timeout.Infinite);
+            timer = new Timer(tmCallback, "", TimeSpan.FromMilliseconds(-1), TimeSpan.FromMilliseconds(-1));
         }
 
         public void Run()
         {
-            TimerOn();
+            timer.Change(TimeSpan.FromMilliseconds(0), defaultInterval);
         }
 
-        public void ChangeInterval(uint intervalInSeconds)
+        public bool ChangeInterval(uint intervalInSeconds)
         {
             TimeSpan requestedInterval = new TimeSpan(0, 0, Convert.ToInt32(intervalInSeconds));
-            bool timerSuccessfullyChanged = timer.Change(requestedInterval, requestedInterval);
+            bool timerSuccessfullyChanged = timer.Change(TimeSpan.Zero, requestedInterval);
+            return timerSuccessfullyChanged;
         }
 
         private void Callback(object objectInfo)
         {
             brain.Do();
-        }
-
-        private void TimerOn()
-        {
-            timer.Change(defaultInterval, defaultInterval);
         }
     }
 }
