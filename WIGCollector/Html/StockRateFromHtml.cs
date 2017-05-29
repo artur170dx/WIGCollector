@@ -39,14 +39,14 @@ namespace WIGCollector.Html
                 return actualRates;
             }
             foreach (StockHtmlNode wig in wigs)
-	        {
-		        HtmlNode node = doc.GetElementbyId(wig.HtmlNode);
+            {
+                HtmlNode node = doc.GetElementbyId(wig.HtmlNode);
                 StockExchangeRate actualRate = new StockExchangeRate();
                 actualRate.Name = wig.Name;
                 actualRate.Value = Convert.ToDouble(node.InnerText);
                 actualRate.Timestamp = DateTime.Now;
                 actualRates.Add(actualRate);
-	        }
+            }
             return actualRates;
         } 
     }
